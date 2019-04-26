@@ -1,11 +1,12 @@
-var levelup = require('levelup')
-var leveljs = require('level-js')
-var db = levelup(leveljs('bigdata'))
+const levelup = require('levelup')
+const leveljs = require('level-js')
 
-db.put('hello', Buffer.from('world'), function (err) {
+const db = levelup(leveljs('bigdata'))
+
+db.put('hello', Buffer.from('world'), err => {
   if (err) throw err
 
-  db.get('hello', function (err, value) {
+  db.get('hello', (err, value) => {
     if (err) throw err
 
     console.log(value.toString()) // 'world'
